@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unser Sonnensystem – 3D-Modell</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div id="canvas-container"></div>
+
+<div id="title">
+  <h1 data-i18n="title">Unser Sonnensystem</h1>
+  <p id="subtitle">Echte Ephemeriden · NASA-Texturen · Keplersche Bahnen</p>
+</div>
+
+<div id="gear">⚙</div>
+<div id="langBtn" title="Sprache / Language">EN</div>
+<div id="homeBtn" title="Zurück zur Übersicht">🧭</div>
+<div id="musicBtn" title="Weltraum-Musik an/aus">🔇</div>
+
+<div id="info">
+  <span class="close" onclick="hideInfo()">✕</span>
+  <div class="ord" id="info-ord"></div>
+  <h2 id="info-name"></h2>
+  <p id="info-text"></p>
+  <img id="info-img" style="display:none" alt="">
+  <div id="info-imgcap" style="display:none"></div>
+  <div id="info-actions"></div>
+  <div class="fact"><span data-i18n="f_dist">Abstand zur Sonne</span><span id="info-dist"></span></div>
+  <div class="fact"><span data-i18n="f_orbit">Umlaufzeit</span><span id="info-orbit"></span></div>
+  <div class="fact"><span data-i18n="f_rot">Eigenrotation</span><span id="info-rot"></span></div>
+  <div class="fact"><span data-i18n="f_tilt">Achsneigung</span><span id="info-tilt"></span></div>
+  <div class="fact"><span data-i18n="f_diam">Durchmesser</span><span id="info-diam"></span></div>
+  <div class="fact"><span data-i18n="f_moons">Monde</span><span id="info-moons"></span></div>
+</div>
+
+<div id="controls">
+  <label class="head"><span data-i18n="c_speed">Geschwindigkeit</span> <span id="speedVal" style="color:#c9c9ec;text-transform:none;letter-spacing:0"></span></label>
+  <input type="range" id="speed" min="0" max="1" step="0.005" value="0.465">
+  <label class="head" data-i18n="c_display">Anzeige</label>
+  <div class="toggle"><input type="checkbox" id="orbits" checked><span data-i18n="c_orbits">Umlaufbahnen</span></div>
+  <div class="toggle"><input type="checkbox" id="labels" checked><span data-i18n="c_labels">Namen</span></div>
+  <div class="toggle"><input type="checkbox" id="axes"><span data-i18n="c_axes">Rotationsachsen</span></div>
+  <div class="toggle"><input type="checkbox" id="belts" checked><span data-i18n="c_belts">Asteroiden- &amp; Kuipergürtel</span></div>
+  <div class="toggle"><input type="checkbox" id="dwarfs" checked><span data-i18n="c_dwarfs">Zwergplaneten &amp; Halley</span></div>
+  <div class="toggle"><input type="checkbox" id="sats"><span data-i18n="c_sats">Satelliten (ISS, Hubble, JWST)</span></div>
+  <div class="toggle"><input type="checkbox" id="probes"><span data-i18n="c_probes">Voyager-Sonden</span></div>
+  <div class="toggle"><input type="checkbox" id="constellations"><span data-i18n="c_constellations">Sternbilder &amp; Sternnamen</span></div>
+  <div class="toggle" style="border-top:1px solid rgba(120,130,255,.2);padding-top:7px;margin-top:3px"><input type="checkbox" id="planetsOnly"><span><b data-i18n="c_planetsOnly">🪐 Nur Planeten &amp; Monde</b></span></div>
+  <div class="toggle"><input type="checkbox" id="shadows"><span data-i18n="c_shadows">Schatten &amp; Finsternisse</span></div>
+  <div class="toggle"><input type="checkbox" id="realScale"><span><b data-i18n="c_realScale">Realer Maßstab</b></span></div>
+  <div class="toggle"><input type="checkbox" id="sfx" checked><span data-i18n="c_sfx">Klang-Effekte</span></div>
+  <label class="head" data-i18n="c_tools">Werkzeuge</label>
+  <div class="btngrid">
+    <div class="btn" id="btnTour" data-i18n="b_tour">🚀 Tour</div>
+    <div class="btn" id="btnJourney" data-i18n="b_journey">🎬 Reise</div>
+    <div class="btn" id="btnCompare" data-i18n="b_compare">⚖️ Vergleich</div>
+    <div class="btn" id="btnCalc" data-i18n="b_calc">🧮 Rechner</div>
+    <div class="btn" id="btnPhoton" data-i18n="b_photon">💡 Lichtstrahl</div>
+    <div class="btn" id="btnTime" data-i18n="b_time">🕰️ Zeitreise</div>
+    <div class="btn" id="btnSeasons" data-i18n="b_seasons">🍂 Jahreszeiten</div>
+    <div class="btn" id="btnSky" data-i18n="b_sky">🌃 Himmel</div>
+    <div class="btn" id="btnShot" data-i18n="b_shot">📷 Foto</div>
+    <div class="btn" id="btnFull" data-i18n="b_full">⛶ Vollbild</div>
+  </div>
+</div>
+
+<div id="dockLeft">
+  <div class="dock" id="timePanel" style="display:none">
+    <span class="close" onclick="closeTimeMachine()">✕</span>
+    <h3 data-i18n="tm_title">🕰️ Zeitmaschine</h3>
+    <input type="date" id="tmDate"> <span class="mini" id="tmToday" data-i18n="tm_today">Heute</span>
+    <input type="range" id="tmSlider" min="-36525" max="36525" step="1" value="0">
+    <div id="tmLabel"></div>
+    <div id="moonPhase" style="margin-top:4px;color:#d0d0ee"></div>
+    <div style="color:#8a8ab8;margin-top:5px;font-size:10px" data-i18n="tm_note">Echte Planetenpositionen (JPL-Näherung). Schieberegler: ±100 Jahre.</div>
+  </div>
+  <div class="dock" id="photonLog" style="display:none">
+    <span class="close" onclick="stopPhoton()">✕</span>
+    <h3 data-i18n="ph_title">💡 Reise mit Lichtgeschwindigkeit</h3>
+    <div id="photonTime">0 s</div>
+    <div id="photonEvents"></div>
+  </div>
+  <div class="dock" id="tourPanel" style="display:none">
+    <span class="close" onclick="stopTour()">✕</span>
+    <h3 data-i18n="tour_title">🚀 Geführte Tour</h3>
+    <div id="tourStatus"></div>
+  </div>
+  <div class="dock" id="seasonPanel" style="display:none">
+    <span class="close" onclick="stopSeasons()">✕</span>
+    <h3 data-i18n="se_title">🍂 Jahreszeiten der Erde</h3>
+    <div id="seasonBtns" style="display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-bottom:8px"></div>
+    <div id="ssDate" style="font-size:13px;color:#fff"></div>
+    <div style="margin:7px 0 3px;color:#8a8ab8;font-size:10px" data-i18n="se_where">Wo steht die Sonne senkrecht?</div>
+    <div style="position:relative;height:13px;background:linear-gradient(90deg,#3a5fa8,#3a7a52 50%,#b8742f);border-radius:7px;margin-bottom:14px">
+      <div style="position:absolute;left:50%;top:-2px;bottom:-2px;width:1px;background:rgba(255,255,255,.4)"></div>
+      <div id="ssNeedle" style="position:absolute;top:-4px;width:4px;height:21px;background:#fff;border-radius:2px;left:calc(50% - 2px);box-shadow:0 0 6px rgba(255,255,255,.8)"></div>
+      <div style="position:absolute;left:3px;top:15px;font-size:8.5px;color:#9ab4e8" data-i18n="se_south">❄ 23,4° Süd</div>
+      <div style="position:absolute;left:50%;transform:translateX(-50%);top:15px;font-size:8.5px;color:#8a8ab8" data-i18n="se_equator">Äquator</div>
+      <div style="position:absolute;right:3px;top:15px;font-size:8.5px;color:#e8c49a" data-i18n="se_north">23,4° Nord ☀</div>
+    </div>
+    <div id="ssHemi" style="font-size:11px;margin-top:4px"></div>
+    <div id="ssAU" style="font-size:10.5px;color:#b8b8d8;margin-top:2px"></div>
+    <div id="seasonInfo" style="font-size:11.5px;line-height:1.5;color:#d0d0ee;margin-top:8px;border-top:1px solid rgba(120,130,255,.18);padding-top:7px"></div>
+    <div style="margin-top:9px;border-top:1px solid rgba(120,130,255,.18);padding-top:7px">
+      <div style="font-size:10px;color:#8a8ab8;margin-bottom:4px" data-i18n="se_anglewhy">Warum der Winkel entscheidet – gleiches Lichtbündel, andere Fläche:</div>
+      <svg viewBox="0 0 260 92" style="width:100%;display:block">
+        <!-- Sommer: steile Strahlen -->
+        <line x1="38" y1="6" x2="50" y2="62" stroke="#ffd27f" stroke-width="2"/>
+        <line x1="52" y1="6" x2="64" y2="62" stroke="#ffd27f" stroke-width="2"/>
+        <line x1="66" y1="6" x2="78" y2="62" stroke="#ffd27f" stroke-width="2"/>
+        <rect x="48" y="62" width="32" height="6" rx="2" fill="#e0703a"/>
+        <line x1="8" y1="68" x2="122" y2="68" stroke="#5a6288" stroke-width="1.5"/>
+        <text x="64" y="82" fill="#e8a87a" font-size="9" text-anchor="middle" data-i18n="se_svg_summer">☀ Sommer: steil → kleine Fläche, HEISS</text>
+        <!-- Winter: flache Strahlen -->
+        <line x1="142" y1="14" x2="218" y2="62" stroke="#ffd27f" stroke-width="2"/>
+        <line x1="152" y1="8" x2="228" y2="56" stroke="#ffd27f" stroke-width="2" opacity="0.85"/>
+        <line x1="162" y1="2" x2="238" y2="50" stroke="#ffd27f" stroke-width="2" opacity="0.7"/>
+        <rect x="168" y="62" width="84" height="6" rx="2" fill="#4a6ab0"/>
+        <line x1="138" y1="68" x2="256" y2="68" stroke="#5a6288" stroke-width="1.5"/>
+        <text x="200" y="82" fill="#8ab0e8" font-size="9" text-anchor="middle" data-i18n="se_svg_winter">❄ Winter: flach → große Fläche, kalt</text>
+      </svg>
+      <div style="font-size:9.5px;color:#8a8ab8;margin-top:3px;line-height:1.4" data-i18n="se_anglenote">Dieselbe Energiemenge verteilt sich im Winter auf die 2–3-fache Fläche – darum heizt die tiefe Wintersonne kaum. Dazu kommt die kürzere Scheindauer pro Tag.</div>
+    </div>
+    <label class="toggle" style="margin-top:8px;font-size:11px"><input type="checkbox" id="seasonOverview"><span data-i18n="se_overview">Bahn-Übersicht (alle 4 Stationen)</span></label>
+  </div>
+</div>
+
+<div id="modal"><div id="modal-card">
+  <span class="close" onclick="closeModal()">✕</span>
+  <div id="modal-body"></div>
+</div></div>
+
+<div id="panel"></div>
+<div id="toast"></div>
+<div id="journeyTitle"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="js/i18n.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/scene.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

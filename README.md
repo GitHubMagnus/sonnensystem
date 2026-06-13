@@ -6,7 +6,7 @@
 
 Ein vollständiges, interaktives 3D-Modell unseres Sonnensystems – von der Merkur-Oberfläche bis zum kosmischen Netz, alles in einer einzigen HTML-Datei ohne Installation oder Abhängigkeiten.
 
-**[Demo ansehen](https://githubmagnus.github.io/sonnensystem/interaktives-sonnensystem.html)**
+**[Demo ansehen](https://githubmagnus.github.io/sonnensystem/)**
 
 ---
 
@@ -67,25 +67,44 @@ Generative Weltraum-Musik, die live im Browser synthetisiert wird – keine Audi
 
 ## Technisches
 
-- **Eine einzige HTML-Datei** – kein Server, kein Build-System, keine npm-Pakete
-- **Drei.js r128** via CDN (cdnjs.cloudflare.com)
+- **Kein Build-System, keine npm-Pakete** – reines HTML/CSS/JavaScript
+- **Three.js r128** via CDN (cdnjs.cloudflare.com)
 - **NASA-Texturen** via GitHub (jeromeetienne/threex.planets und mrdoob/three.js) – mit prozeduralem Fallback wenn offline
-- **2.662 Zeilen** Code, 106 Funktionen
+- Zweisprachige Oberfläche (Deutsch / Englisch), zur Laufzeit umschaltbar
 - Läuft vollständig im Browser, auch offline nach dem ersten Laden
 - Getestet in Chrome, Firefox, Safari (Desktop & Mobile)
+
+### Projektstruktur
+
+Der Code ist in klar getrennte Dateien aufgeteilt (klassische `<script>`-Einbindung, kein Modul-Bundler – läuft daher auch per Doppelklick):
+
+```
+sonnensystem/
+├─ index.html        Grundgerüst, lädt CSS & Skripte in fester Reihenfolge
+├─ css/
+│  └─ styles.css     gesamtes Layout & Design
+└─ js/
+   ├─ i18n.js        Sprachen, Übersetzungen, Anzeigenamen
+   ├─ data.js        Bahnelemente (JPL) und Planeten-/Körperdaten
+   ├─ scene.js       Three.js-Aufbau: Renderer, Texturen, Sterne, Galaxien, Körper, Sonden
+   ├─ ui.js          Bedienung: Kamera, Auswahl, Werkzeuge, Modals, Jahreszeiten, Audio
+   └─ main.js        Animationsschleife, Sprachanwendung, Programmstart
+```
+
+> Die Skripte teilen sich einen gemeinsamen globalen Scope; die Reihenfolge in `index.html` (i18n → data → scene → ui → main) stellt sicher, dass alles vor seiner Verwendung definiert ist.
 
 ---
 
 ## Starten
 
-Einfach `sonnensystem.html` herunterladen und im Browser öffnen – fertig.
+Einfach das Repository herunterladen und `index.html` im Browser öffnen – fertig. Kein Server, kein Build nötig.
 
 ```bash
 git clone https://github.com/GitHubMagnus/sonnensystem
-# interaktives-sonnensystem.html im Browser öffnen
+# index.html im Browser öffnen
 ```
 
-Oder direkt die [Live-Demo](https://githubmagnus.github.io/sonnensystem/interaktives-sonnensystem.html) aufrufen.
+Oder direkt die [Live-Demo](https://githubmagnus.github.io/sonnensystem/) aufrufen.
 
 ---
 
@@ -128,7 +147,7 @@ MIT – frei verwendbar, veränderbar und weiterzugeben. Bei Verwendung der NASA
 
 A complete, interactive 3D model of our Solar System – from the surface of Mercury to the cosmic web, all in a single HTML file with no installation or dependencies.
 
-**[View demo](https://githubmagnus.github.io/sonnensystem/interaktives-sonnensystem.html)**
+**[View demo](https://githubmagnus.github.io/sonnensystem/)**
 
 ---
 
@@ -189,25 +208,44 @@ Generative space music synthesized live in the browser – no audio files, fully
 
 ## Technical
 
-- **A single HTML file** – no server, no build system, no npm packages
+- **No build system, no npm packages** – plain HTML/CSS/JavaScript
 - **Three.js r128** via CDN (cdnjs.cloudflare.com)
 - **NASA textures** via GitHub (jeromeetienne/threex.planets and mrdoob/three.js) – with a procedural fallback when offline
 - Bilingual interface (German / English), switchable at runtime
 - Runs entirely in the browser, even offline after the first load
 - Tested in Chrome, Firefox, Safari (desktop & mobile)
 
+### Project structure
+
+The code is split into clearly separated files (classic `<script>` includes, no module bundler – so it still runs from a double-click):
+
+```
+sonnensystem/
+├─ index.html        scaffold, loads CSS & scripts in a fixed order
+├─ css/
+│  └─ styles.css     all layout & design
+└─ js/
+   ├─ i18n.js        languages, translations, display names
+   ├─ data.js        orbital elements (JPL) and planet/body data
+   ├─ scene.js       Three.js setup: renderer, textures, stars, galaxies, bodies, probes
+   ├─ ui.js          interaction: camera, selection, tools, modals, seasons, audio
+   └─ main.js        animation loop, language application, startup
+```
+
+> The scripts share one global scope; the order in `index.html` (i18n → data → scene → ui → main) ensures everything is defined before it is used.
+
 ---
 
 ## Run it
 
-Just download `interaktives-sonnensystem.html` and open it in your browser – done.
+Just download the repository and open `index.html` in your browser – done. No server, no build needed.
 
 ```bash
 git clone https://github.com/GitHubMagnus/sonnensystem
-# open interaktives-sonnensystem.html in your browser
+# open index.html in your browser
 ```
 
-Or open the [live demo](https://githubmagnus.github.io/sonnensystem/interaktives-sonnensystem.html) directly.
+Or open the [live demo](https://githubmagnus.github.io/sonnensystem/) directly.
 
 ---
 
