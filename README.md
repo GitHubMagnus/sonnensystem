@@ -2,7 +2,7 @@
 
 Ein vollständiges, interaktives 3D-Modell unseres Sonnensystems – von der Merkur-Oberfläche bis zum kosmischen Netz, alles in einer einzigen HTML-Datei ohne Installation oder Abhängigkeiten.
 
-**[Demo ansehen](https://githubmagnus.github.io/sonnensystem/sonnensystem_28.html)**
+**[Demo ansehen](https://githubmagnus.github.io/sonnensystem/interaktives-sonnensystem.html)**
 
 ---
 
@@ -78,10 +78,10 @@ Einfach `sonnensystem.html` herunterladen und im Browser öffnen – fertig.
 
 ```bash
 git clone https://github.com/GitHubMagnus/sonnensystem
-# sonnensystem_28.html im Browser öffnen
+# interaktives-sonnensystem.html im Browser öffnen
 ```
 
-Oder direkt die [Live-Demo](https://githubmagnus.github.io/sonnensystem/sonnensystem_28.html) aufrufen.
+Oder direkt die [Live-Demo](https://githubmagnus.github.io/sonnensystem/interaktives-sonnensystem.html) aufrufen.
 
 ---
 
