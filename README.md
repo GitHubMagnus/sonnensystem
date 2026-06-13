@@ -2,7 +2,18 @@
 
 Ein vollständiges, interaktives 3D-Modell unseres Sonnensystems – von der Merkur-Oberfläche bis zum kosmischen Netz, alles in einer einzigen HTML-Datei ohne Installation oder Abhängigkeiten.
 
-**[Demo ansehen](https://deinname.github.io/sonnensystem/sonnensystem.html)**
+**[Demo ansehen](https://githubmagnus.github.io/sonnensystem/sonnensystem_28.html)**
+
+---
+
+## Empfohlener Einstieg
+
+Für das beste Erlebnis beim ersten Start:
+
+1. **Vollbild aktivieren** – Klick auf den ⛶-Knopf im Steuermenü (rechts)
+2. **Musik einschalten** – Klick auf den 🔇-Knopf (rechts unten), er wechselt zu 🔊
+3. **Jahreszeiten-Demo** – Im Steuermenü auf 🍂 **Jahreszeiten** klicken: ein ganzes Erdjahr im Zeitraffer mit Live-Erklärung warum es Sommer und Winter gibt
+4. **Kamerafahrt starten** – Auf 🎬 **Reise** klicken: eine filmische Reise von Merkur bis zum kosmischen Netz
 
 ---
 
@@ -66,11 +77,11 @@ Generative Weltraum-Musik, die live im Browser synthetisiert wird – keine Audi
 Einfach `sonnensystem.html` herunterladen und im Browser öffnen – fertig.
 
 ```bash
-git clone https://github.com/deinname/sonnensystem
-# sonnensystem.html im Browser öffnen
+git clone https://github.com/GitHubMagnus/sonnensystem
+# sonnensystem_28.html im Browser öffnen
 ```
 
-Oder direkt die [Live-Demo](https://deinname.github.io/sonnensystem/sonnensystem.html) aufrufen.
+Oder direkt die [Live-Demo](https://githubmagnus.github.io/sonnensystem/sonnensystem_28.html) aufrufen.
 
 ---
 
