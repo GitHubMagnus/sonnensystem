@@ -1,5 +1,9 @@
 # Interaktives 3D-Sonnensystem
 
+🌍 **Deutsch** | [English](#interactive-3d-solar-system)
+
+> Das Modell selbst ist zweisprachig: oben rechts mit dem **EN/DE**-Knopf umschalten.
+
 Ein vollständiges, interaktives 3D-Modell unseres Sonnensystems – von der Merkur-Oberfläche bis zum kosmischen Netz, alles in einer einzigen HTML-Datei ohne Installation oder Abhängigkeiten.
 
 **[Demo ansehen](https://githubmagnus.github.io/sonnensystem/interaktives-sonnensystem.html)**
@@ -112,3 +116,126 @@ Oder direkt die [Live-Demo](https://githubmagnus.github.io/sonnensystem/interakt
 ## Lizenz
 
 MIT – frei verwendbar, veränderbar und weiterzugeben. Bei Verwendung der NASA-Texturen gelten deren eigene Nutzungsbedingungen (gemeinfrei für nicht-kommerzielle Zwecke).
+
+---
+---
+
+# Interactive 3D Solar System
+
+[Deutsch](#interaktives-3d-sonnensystem) | 🌍 **English**
+
+> The model itself is bilingual: switch with the **EN/DE** button in the top right.
+
+A complete, interactive 3D model of our Solar System – from the surface of Mercury to the cosmic web, all in a single HTML file with no installation or dependencies.
+
+**[View demo](https://githubmagnus.github.io/sonnensystem/interaktives-sonnensystem.html)**
+
+---
+
+## Recommended start
+
+For the best experience on your first launch:
+
+1. **Enable fullscreen** – click the ⛶ button in the control menu (right)
+2. **Turn on the music** – click the 🔇 button (bottom right); it switches to 🔊
+3. **Seasons demo** – click 🍂 **Seasons** in the control menu: a whole Earth year in fast-forward with a live explanation of why summer and winter happen
+4. **Start the journey** – click 🎬 **Journey**: a cinematic flight from Mercury to the cosmic web
+
+---
+
+## What awaits you
+
+Launch the page and you stand right in the middle of the Solar System. Drag to rotate, scroll to zoom – and if you zoom out far enough, the Milky Way gradually opens up, then the Local Group with Andromeda, and finally the cosmic web, in which every point of light is an entire galaxy with billions of stars.
+
+### The planets
+
+All 8 planets with NASA textures, real orbital inclinations and physically correct rotations. Earth is especially detailed: a custom shader shows the city lights on the night side, plus 4K clouds, ocean specular highlights and a Fresnel atmospheric rim. Gas giants like Jupiter and Saturn are realistically flattened, and Saturn casts real shadows through its rings. Plus 5 dwarf planets (Pluto, Ceres, Eris, Makemake, Haumea) and Halley's Comet with its tail pointing away from the Sun.
+
+### Real physics
+
+Planet positions are based on the JPL approximation formulas (J2000 ephemerides) with Kepler's equation – at any date the positions match reality. You can open the **time machine**, enter your birth date and see where the planets stood back then.
+
+### Tools
+
+| Tool | Description |
+|---|---|
+| **Time machine** | Real planet positions at any date, ±100 years via slider |
+| **Seasons demo** | A year in fast-forward with a live explanation of why we have summer and winter |
+| **View from Earth** | Which planets are in the evening or morning sky today? |
+| **Conjunction finder** | When will two planets next appear close together? |
+| **Moon phases** | The real Moon phase for the chosen date |
+| **Camera journey** | A cinematic trip from Mercury to the cosmic web, on a loop |
+| **Guided tour** | An automatic flight from planet to planet with info texts |
+| **Planet comparison** | Two planets side by side – size, gravity, temperature, moons |
+| **Space calculator** | Your weight on other worlds, travel time by car/aeroplane/rocket/light |
+| **Light-ray demo** | A photon sets off from the Sun – after 8 minutes it reaches Earth |
+| **Screenshot** | Save the current view as a PNG |
+
+### Probes & satellites
+
+- **Voyager 1 & 2** with replayable reconstructed flight paths (launch 1977 to today) and the Golden Record
+- **ISS, Hubble Telescope, James Webb Telescope** (JWST correctly at Lagrange point L2)
+- All appear only from their real launch date in the time machine
+
+### The view outward
+
+Beyond a certain zoom level the nearby stars fade out and the Milky Way appears as a 3D spiral galaxy with four arms – our Solar System marked with an arrow at its real position in the Orion Arm. Further out: Andromeda, the Triangulum Galaxy and the Magellanic Clouds in their real sky directions. Furthest out: the cosmic web of galaxy clusters and filaments.
+
+### Sound
+
+Generative space music synthesized live in the browser – no audio files, fully royalty-free and offline. Plus atmospheric sound effects for selecting planets, camera flights and cosmic milestones.
+
+---
+
+## Technical
+
+- **A single HTML file** – no server, no build system, no npm packages
+- **Three.js r128** via CDN (cdnjs.cloudflare.com)
+- **NASA textures** via GitHub (jeromeetienne/threex.planets and mrdoob/three.js) – with a procedural fallback when offline
+- Bilingual interface (German / English), switchable at runtime
+- Runs entirely in the browser, even offline after the first load
+- Tested in Chrome, Firefox, Safari (desktop & mobile)
+
+---
+
+## Run it
+
+Just download `interaktives-sonnensystem.html` and open it in your browser – done.
+
+```bash
+git clone https://github.com/GitHubMagnus/sonnensystem
+# open interaktives-sonnensystem.html in your browser
+```
+
+Or open the [live demo](https://githubmagnus.github.io/sonnensystem/interaktives-sonnensystem.html) directly.
+
+---
+
+## Controls
+
+| Action | Input |
+|---|---|
+| Rotate | Click and drag |
+| Zoom | Mouse wheel / pinch |
+| Select & follow a planet | Click |
+| Stop following | ✕ in the info card or the 🧭 button |
+| Overview | 🧭 button (bottom right) |
+| Music | 🔊 button |
+| Language | EN/DE button (top right) |
+| Settings (mobile) | ⚙ button |
+
+---
+
+## Sources & credits
+
+- **Planet textures**: [jeromeetienne/threex.planets](https://github.com/jeromeetienne/threex.planets) – based on NASA imagery (public domain)
+- **Earth night lights**: [mrdoob/three.js](https://github.com/mrdoob/three.js) – NASA Black Marble
+- **4K Earth map**: [turban/webgl-earth](https://github.com/turban/webgl-earth) – NASA Blue Marble
+- **Orbital elements**: JPL Solar System Dynamics (J2000 approximation formulas)
+- **3D engine**: [Three.js r128](https://threejs.org)
+
+---
+
+## License
+
+MIT – free to use, modify and redistribute. When using the NASA textures, their own terms apply (public domain for non-commercial use).
